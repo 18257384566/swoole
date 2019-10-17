@@ -4,7 +4,7 @@ $http = new swoole_http_server("0.0.0.0",9111); //0.0.0.0 监听所有
 
 $http->set([
     'enable_static_handler' => true,
-    'document_root' => '/www/swoole/thinkphp/public/static',
+    'document_root' => '/www/swoole/data',
 ]);
 
 
