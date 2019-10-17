@@ -1,0 +1,16 @@
+/node_modules
+/vendor
+/.idea
+/.vagrant
+.DS_Store
+/app/config/config.php
+/.phalcon
+/app/cache
+*.log
+/ide
+/public/id_rsa.pub
+/public/id_rsa
+phinx.yml
+.idea/workspace.xml
+/public/static/js/config.js
+
