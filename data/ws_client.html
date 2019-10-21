@@ -19,14 +19,14 @@
 
         //实例化 onmessage
         websocket.onmessage = function(evt){
-            console.log("web-server-return-data:");
+            console.log("web-server-return-data:" + evt.data);
         }
 
         websocket.onclose = function(evt){
             console.log("close");
         }
 
-        websocket.onerror = function(evt, e){
+        websocket.onerror = function(evt, e){ 
             console.log("error:" + evt.data);
         }
     </script>
