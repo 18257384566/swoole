@@ -3,7 +3,7 @@
 $server = new swoole_websocket_server('0.0.0.0', 9112);
 
 //监听websocket连接打开事件
-$server->on('open', function (Swoole\WebSocket\Server $server, $request) {
+$server->on('open', function (swoole_websocket_server $server, $request) {
     echo "server: handshake success with fd:{$request->fd}\n";
 });
 
