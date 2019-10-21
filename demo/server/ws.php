@@ -33,13 +33,13 @@ class Ws{
     //监听ws消息事件
     public function onMessage($ws, $frame){
         echo "ser-push-message:{$frame->data}\n";
-        //do 10s
+        // todo 10s
         $data = [
             'task' => 1,
             'fd' => $frame->fd,
         ];
         $ws->task($data);
-        $ws->push($frame->fd, "".date('Y-m-d H:i:s'));
+        $ws->push($frame->fd, "server-push:".date('Y-m-d H:i:s'));
     }
 
     public function onTask($serv, $taskId, $workerId, $data){
