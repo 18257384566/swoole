@@ -25,7 +25,7 @@ class Ws{
 
     //监听ws连接事件
     public function onOpen($ws, $requst){
-
+        var_dump($requst->fd);
     }
 
     //监听ws消息事件
