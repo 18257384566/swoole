@@ -14,6 +14,7 @@
 
         //实例对象的onopen属性
         websocket.onopen = function(evt){
+            websocket.send('send:hello');
             console.log("conected-swoole-success");
         }
 
@@ -21,10 +22,6 @@
         websocket.onmessage = function(evt){
             console.log("web-server-return-data:" + evt.data);
         }
-
-//        websocket.onreceive = function(evt){
-//            console.log("web-server-return-data:" + evt.data);
-//        }
 
         websocket.onclose = function(evt){
             console.log("close");
