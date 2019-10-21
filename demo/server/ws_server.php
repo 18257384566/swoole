@@ -10,7 +10,7 @@ $server->on('open', function (Swoole\WebSocket\Server $server, $request) {
 //监听websocket消息事件
 $server->on('message', function (Swoole\WebSocket\Server $server, $frame) {
     echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
-    $server->push($frame->fd, "xsy:push server");
+    $server->push($frame->fd, "xsy-push-server");
 });
 
 $server->on('close', function ($ser, $fd) {
