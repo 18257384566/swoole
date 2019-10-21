@@ -33,17 +33,28 @@ class Ws{
     //监听ws连接事件
     public function onOpen($ws, $requst){
         var_dump($requst->fd);
+        if($requst->fd == 1){
+            swoole_timer_tick(3000,function($timer_id){
+                echo "3s-timerId-{$timer_id}";
+            });
+        }
     }
 
     //监听ws消息事件
     public function onMessage($ws, $frame){
         echo "ser-push-message:{$frame->data}\n";
+
         // todo 10s
         $data = [
             'task' => 1,
             'fd' => $frame->fd,
         ];
-        $ws->task($data);
+        //$ws->task($data);
+
+        swoole_timer_after(5000,function()use($ws, $frame){
+            echo '5秒后执行';
+            $ws->push($frame->fd, "5秒后的推送");
+        });
         $ws->push($frame->fd, "server-push:".date('Y-m-d H:i:s'));
     }
 
