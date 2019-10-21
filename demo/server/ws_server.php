@@ -14,6 +14,12 @@ $server->on('message', function (swoole_websocket_server $server, $frame) {
     $server->push($frame->fd, "xsy-push-server");
 });
 
+$server->on('receive', function (swoole_websocket_server $server, $frame) {
+    echo 'test';
+    echo "receive from {$frame->fd}:{$frame->data},opcode:{$frame->opcode},fin:{$frame->finish}\n";
+    $server->push($frame->fd, "xsy-push-server");
+});
+
 $server->on('close', function ($ser, $fd) {
     echo "client {$fd} closed\n";
 });
