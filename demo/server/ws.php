@@ -35,7 +35,7 @@ class Ws{
         var_dump($requst->fd);
         if($requst->fd == 1){
             swoole_timer_tick(3000,function($timer_id){
-                echo "3s-timerId-{$timer_id}";
+                echo "3s-timerId-{$timer_id}\n";
             });
         }
     }
@@ -52,7 +52,7 @@ class Ws{
         //$ws->task($data);
 
         swoole_timer_after(5000,function()use($ws, $frame){
-            echo '5秒后执行';
+            echo "5秒后执行\n";
             $ws->push($frame->fd, "5秒后的推送");
         });
         $ws->push($frame->fd, "server-push:".date('Y-m-d H:i:s'));

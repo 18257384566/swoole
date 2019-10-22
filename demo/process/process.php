@@ -9,8 +9,8 @@
 $process = new swoole_process(function($pro){
     echo '111';
 
-    $pro->exec('/usr/local/php/bin/php', [__DIR__.'/../client/tcp_client.php']); //exec('PHP安装目录'，[文件地址])
-},false);   //false:会打印111 true：不会打印111
+    $pro->exec('/usr/local/php/bin/php', [__DIR__.'/../server/http_server.php']); //exec('PHP安装目录'，[文件地址])
+},true);   //false:会打印111 true：不会打印111
 
 $pid = $process->start();
 var_dump($pid);
