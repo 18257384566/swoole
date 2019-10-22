@@ -23,7 +23,7 @@ foreach ($curls as $k => $curl){
     $process = new swoole_process(function($pro)use($curl){
         $result = curlData($curl);
 //        echo $result.PHP_EOL;   //输出到管道
-        $pro->write($result.PHP_EOL);
+        $pro->write($result.PHP_EOL);   //写入到管道
 
     },true);
 
@@ -36,7 +36,7 @@ foreach ($works as $process){
 }
 
 function curlData($url){
-    sleep(10);
+    sleep(1);
     return $url.'success'.PHP_EOL;
 }
 
