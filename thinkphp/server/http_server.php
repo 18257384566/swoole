@@ -19,6 +19,13 @@ $http->on('WorkerStart', function(swoole_server $server, $worker_id){
 
 
 $http->on('request', function($request, $response){ //$request:接受信息 $response:发送客户端
+    if(!empty($_GET)){
+        unset($_GET);
+    }
+    if(!empty($_POST)){
+        unset($_POST);
+    }
+
     if(isset($request->server)){
         foreach ($request->server as $k => $v){
             $_SERVER[strtoupper($k)] = $v;
