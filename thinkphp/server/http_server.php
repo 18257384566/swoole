@@ -42,8 +42,12 @@ $http->on('request', function($request, $response){ //$request:接受信息 $res
 
     // 2. 执行应用
     ob_start();
-    \think\App::run()->send();
-    $res = ob_get_contents();
+    try{
+        \think\App::run()->send();
+    }catch (\Exception $e){
+        // todo
+    }
+    $res = ob_get_contents(); //将缓存赋值给变量
     ob_end_clean();
 
     $response->cookie('name','neirong',time() + 1800);
