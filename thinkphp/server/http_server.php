@@ -57,7 +57,7 @@ $http->on('request', function($request, $response)use($http){ //$request:接受�
     $res = ob_get_contents(); //将缓存赋值给变量
     ob_end_clean();
 
-    $http->reset($http->worker_id);
+    $http->close($http->worker_id);
 
     $response->cookie('name','neirong',time() + 1800);
     $response->end($res);
