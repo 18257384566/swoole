@@ -8,6 +8,9 @@ $http->on('request', function($request, $response){ //time = max(redis, mysql)
     $redis->connect('127.0.0.1', 6379);
     $value = $redis->get($request->get['a']);
 
+    //mysql操作
+    //time = max(mysql,redis)
+
     $response->header('Content-Type', 'text-plain');
     $response->end($value);
 });
