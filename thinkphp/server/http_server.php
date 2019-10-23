@@ -18,13 +18,13 @@ $http->on('WorkerStart', function(swoole_server $server, $worker_id){
 });
 
 
-$http->on('request', function($request, $response){ //$request:接受信息 $response:发送客户端
-    if(!empty($_GET)){
-        unset($_GET);
-    }
-    if(!empty($_POST)){
-        unset($_POST);
-    }
+$http->on('request', function($request, $response)use($http){ //$request:接受信息 $response:发送客户端
+//    if(!empty($_GET)){
+//        unset($_GET);
+//    }
+//    if(!empty($_POST)){
+//        unset($_POST);
+//    }
 
     if(isset($request->server)){
         foreach ($request->server as $k => $v){
@@ -56,6 +56,8 @@ $http->on('request', function($request, $response){ //$request:接受信息 $res
     }
     $res = ob_get_contents(); //将缓存赋值给变量
     ob_end_clean();
+
+    $http->close();
 
     $response->cookie('name','neirong',time() + 1800);
     $response->end($res);
