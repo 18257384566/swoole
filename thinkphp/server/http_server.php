@@ -41,10 +41,13 @@ $http->on('request', function($request, $response){ //$request:接受信息 $res
     }
 
     // 2. 执行应用
+    ob_start();
     \think\App::run()->send();
+    $res = ob_get_contents();
+    ob_end_clean();
 
     $response->cookie('name','neirong',time() + 1800);
-    $response->end("lalal".json_encode($request->get));
+    $response->end($res);
 });
 
 $http->start();
