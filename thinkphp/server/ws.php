@@ -81,7 +81,7 @@ class Ws{
         ob_start();
         $res = ob_get_contents();
         ob_end_clean();
-        $response->end = $res;
+        $response->end($res);
     }
 
     //监听ws连接事件
