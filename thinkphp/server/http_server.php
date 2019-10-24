@@ -54,7 +54,7 @@ $http->on('request', function($request, $response)use($http){ //$request:接受�
     }catch (\Exception $e){
         // todo
     }
-    echo '-action-:'.request()->action().PHP_EOL;
+    echo '-action-:'.request()->action().PHP_EOL.'-method-:'.request()->method().PHP_EOL;
     $res = ob_get_contents(); //将缓存赋值给变量
     ob_end_clean();
 
