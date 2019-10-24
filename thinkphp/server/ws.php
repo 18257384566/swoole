@@ -80,7 +80,7 @@ class Ws{
         }
         $res = ob_get_contents();
         ob_end_clean();
-        
+
         $response->end($res);
     }
 
