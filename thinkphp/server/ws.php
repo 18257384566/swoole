@@ -72,15 +72,19 @@ class Ws{
 
         $_POST['http_server'] = $this->ws;
 
+        // 2. 执行应用
+        ob_start();
         try{
-            think\App::run()->send();
-        }catch (Exception $e){
+            \think\App::run()->send();
+        }catch (\Exception $e){
             // todo
         }
-
-        ob_start();
-        $res = ob_get_contents();
+        $res = ob_get_contents(); //将缓存赋值给变量
         ob_end_clean();
+
+//    $http->close();
+
+        $response->cookie('name','neirong',time() + 1800);
         $response->end($res);
     }
 
