@@ -190,7 +190,7 @@ class Debug
         $label = (null === $label) ? '' : rtrim($label) . ':';
 
         ob_start();
-        var_dump($var);
+//        var_dump($var);
         $output = preg_replace('/\]\=\>\n(\s+)/m', '] => ', ob_get_clean());
 
         if (IS_CLI) {
