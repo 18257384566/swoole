@@ -25,7 +25,7 @@ $http->on('request', function($request, $response)use($http){ //$request:接受�
 //    if(!empty($_POST)){
 //        unset($_POST);
 //    }
-var_dump($request->server);
+//var_dump($request->server);
     if(isset($request->server)){
         foreach ($request->server as $k => $v){
             $_SERVER[strtoupper($k)] = $v;
@@ -54,7 +54,7 @@ var_dump($request->server);
     }catch (\Exception $e){
         // todo
     }
-    echo '-action-:'.request()->action().PHP_EOL;
+//    echo '-action-:'.request()->action().PHP_EOL;
     $res = ob_get_contents(); //将缓存赋值给变量
     ob_end_clean();
 
