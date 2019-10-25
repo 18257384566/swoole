@@ -4,7 +4,7 @@ namespace app\index\controller;
 class image
 {
     public function index(){
-        echo 'files';
+        echo 'files';exit;
         var_dump($_FILES);
     }
 
