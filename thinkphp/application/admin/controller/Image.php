@@ -1,10 +1,10 @@
 <?php
-namespace app\index\controller;
+namespace app\admin\controller;
 
 class image
 {
     public function index(){
-        echo 'files';exit;
+        echo 'files';
         var_dump($_FILES);
     }
 
