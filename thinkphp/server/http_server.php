@@ -25,7 +25,7 @@ $http->on('request', function($request, $response)use($http){ //$request:接受�
     if(!empty($_POST)){
         unset($_POST);
     }
-    
+
 //var_dump($request->server);
     if(isset($request->server)){
         foreach ($request->server as $k => $v){
