@@ -43,7 +43,7 @@ class Ws{
         require __DIR__ . '/../thinkphp/base.php';
     }
 
-    public function onRequest($request,$response){
+    public function onRequest($request,$response){ var_dump($request->files); echo 'test';
         $_SERVER = [];
         if(isset($request->server)){
             foreach ($request->server as $k => $v){
@@ -70,7 +70,7 @@ class Ws{
             }
         }
 
-        $_FILES = []; var_dump($request->files);
+        $_FILES = [];
         if(isset($request->files)){
             foreach ($request->files as $k => $v){
                 $_FILES[$k] = $v;
