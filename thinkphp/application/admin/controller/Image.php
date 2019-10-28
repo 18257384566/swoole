@@ -4,8 +4,8 @@ namespace app\admin\controller;
 class image
 {
     public function index(){
-        echo 'files';
-        var_dump($_GET);
+        echo "111\n";
+        var_dump($_GET); echo '222';
         var_dump($_FILES);
     }
 
