@@ -43,7 +43,7 @@ class Ws{
         require __DIR__ . '/../thinkphp/base.php';
     }
 
-    public function onRequest($request,$response){ var_dump($request->get);var_dump($request->files); echo 'test';
+    public function onRequest($request,$response){
         $_SERVER = [];
         if(isset($request->server)){
             foreach ($request->server as $k => $v){
@@ -70,7 +70,7 @@ class Ws{
             }
         }
 
-        $_FILES = [];
+//        $_FILES = [];
         if(isset($request->files)){
             foreach ($request->files as $k => $v){
                 $_FILES[$k] = $v;
@@ -89,6 +89,8 @@ class Ws{
         ob_end_clean();
 
         $response->end($res);
+
+        var_dump($request->files);echo 'bbbbb';
     }
 
     //监听ws连接事件
