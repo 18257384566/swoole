@@ -1,11 +1,10 @@
-
 var wsurl = 'ws://118.31.109.21:9111';
 
 var websocket = new WebSocket(wsurl);
 
 //实例对象的onopen属性
 websocket.onopen = function(evt){
-    //websocket.send('send:hello');
+    // websocket.send('send:hello');
     console.log("conected-swoole-success");
 }
 
@@ -19,5 +18,5 @@ websocket.onclose = function(evt){
 }
 
 websocket.onerror = function(evt, e){
-        console.log("error:" + evt.data);
-    }
+    console.log("error:" + evt.data);
+}
