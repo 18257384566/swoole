@@ -44,64 +44,59 @@ class Ws{
     }
 
     public function onRequest($request,$response){ //var_dump($request);exit;
-        global $server;//调用外部的server
-        // $server->connections 遍历所有websocket连接用户的fd，给所有用户推送
-        foreach ($server->connections as $fd) {
-            // 需要先判断是否是正确的websocket连接，否则有可能会push失败
-            if ($server->isEstablished($fd)) {
-                $server->push($fd, 'lalalalla');
-            }
-        }
+        $response->end("<h1>hello1 swoole</h1>");
 
 
-
-
-
-        $_SERVER = [];
-        if(isset($request->server)){
-            foreach ($request->server as $k => $v){
-                $_SERVER[strtoupper($k)] = $v;
-            }
-        }
-        if(isset($request->header)){
-            foreach ($request->header as $k => $v){
-                $_SERVER[strtoupper($k)] = $v;
-            }
-        }
-
-        $_GET = [];
-        if(isset($request->get)){
-            foreach ($request->get as $k => $v){
-                $_GET[$k] = $v;
-            }
-        }
-
-        $_POST = [];
-        if(isset($request->post)){
-            foreach ($request->post as $k => $v){
-                $_POST[$k] = $v;
-            }
-        }
-
-        $_POST['http_server'] = $this->ws;
-
-        $_FILES = [];
-        if(isset($request->files)){
-            foreach ($request->files as $k => $v){
-                $_FILES[$k] = $v;
-            }
-        }
-
-        ob_start();
-        try{
-            think\App::run()->send();
-        }catch (Exception $e){
-            // todo
-        }
-        $res = ob_get_contents();
-        ob_end_clean();
-
-        $response->end($res);
+//        global $server;//调用外部的server
+//        var_dump($request->fd);
+//        $server->push($request->fd, "server-push:".date('Y-m-d H:i:s'));
+//
+//
+//        $_SERVER = [];
+//        if(isset($request->server)){
+//            foreach ($request->server as $k => $v){
+//                $_SERVER[strtoupper($k)] = $v;
+//            }
+//        }
+//        if(isset($request->header)){
+//            foreach ($request->header as $k => $v){
+//                $_SERVER[strtoupper($k)] = $v;
+//            }
+//        }
+//
+//        $_GET = [];
+//        if(isset($request->get)){
+//            foreach ($request->get as $k => $v){
+//                $_GET[$k] = $v;
+//            }
+//        }
+//
+//        $_POST = [];
+//        if(isset($request->post)){
+//            foreach ($request->post as $k => $v){
+//                $_POST[$k] = $v;
+//            }
+//        }
+//
+//        $_POST['http_server'] = $this->ws;
+//
+//        $_FILES = [];
+//        if(isset($request->files)){
+//            foreach ($request->files as $k => $v){
+//                $_FILES[$k] = $v;
+//            }
+//        }
+//
+//        ob_start();
+//        try{
+//            think\App::run()->send();
+//        }catch (Exception $e){
+//            // todo
+//        }
+//        $res = ob_get_contents();
+//        ob_end_clean();
+//
+//        $response->end($res);
 
         //($request->files);echo 'bbbbb';
     }
