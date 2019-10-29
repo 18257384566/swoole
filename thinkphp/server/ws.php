@@ -24,7 +24,7 @@ class Ws{
         ));
 
         $this->ws->on("workerstart", [$this, 'onWorkerStart']);
-        $this->ws->on("request", [$this, ' ']);
+        $this->ws->on("request", [$this, 'onRequest']);
         $this->ws->on("open", [$this, 'onOpen']);
         $this->ws->on("message", [$this, 'onMessage']);
         $this->ws->on("task", [$this, 'onTask']);
