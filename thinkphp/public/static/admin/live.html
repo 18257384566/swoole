@@ -193,7 +193,7 @@
           event.preventDefault();
           var formData = $('form').serialize();
           // TODO: 请求后台接口跳转界面，前端跳转或者后台跳
-          $.get("http://http://118.31.109.21:9111?s=admin/live/push&" + formData, function (data) {
+          $.get("http://118.31.109.21:9111?s=admin/live/push&" + formData, function (data) {
 
             if (data.status == 1) {
               // 登录成功
