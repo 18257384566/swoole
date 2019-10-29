@@ -62,6 +62,7 @@ class Ws{
                 $_GET[$k] = $v;
             }
         }
+        $_GET['xx'] = 'yy';
 
         $_POST = [];
         if(isset($request->post)){
@@ -70,14 +71,14 @@ class Ws{
             }
         }
 
+        $_POST['http_server'] = $this->ws;
+
         $_FILES = [];
         if(isset($request->files)){
             foreach ($request->files as $k => $v){
                 $_FILES[$k] = $v;
             }
         }
-
-        $_POST['http_server'] = $this->ws;
 
         ob_start();
         try{
