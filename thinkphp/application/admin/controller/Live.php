@@ -9,7 +9,11 @@ class Live
         var_dump($_POST);
 
         //入库，整理数据push到前端
-        $_POST['http_server']->push(2,'lalalalalla');
+        $ws = $_POST['http_server'];
+        foreach($ws->connections as $fd)
+        {
+            $ws->send($fd, "xsy-hello");
+        }
     }
 
 
