@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-class image
+class Image
 {
     public function index(){
         echo "333\n";
