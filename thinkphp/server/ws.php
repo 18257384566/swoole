@@ -44,52 +44,52 @@ class Ws{
     }
 
     public function onRequest($request,$response){ //var_dump($request);exit;
-        $_SERVER = [];
-        if(isset($request->server)){
-            foreach ($request->server as $k => $v){
-                $_SERVER[strtoupper($k)] = $v;
-            }
-        }
-        if(isset($request->header)){
-            foreach ($request->header as $k => $v){
-                $_SERVER[strtoupper($k)] = $v;
-            }
-        }
-
-        $_GET = [];
-        if(isset($request->get)){
-            foreach ($request->get as $k => $v){
-                $_GET[$k] = $v;
-            }
-        }
-        $_GET['xx'] = 'yy';
-
-        $_POST = [];
-        if(isset($request->post)){
-            foreach ($request->post as $k => $v){
-                $_POST[$k] = $v;
-            }
-        }
-
-        $_POST['http_server'] = $this->ws;
-
-        $_FILES = [];
-        if(isset($request->files)){
-            foreach ($request->files as $k => $v){
-                $_FILES[$k] = $v;
-            }
-        }
-
-        ob_start();
-        try{
-            think\App::run()->send();
-        }catch (Exception $e){
-            // todo
-        }
-        $res = ob_get_contents();
-        ob_end_clean();
-
-        $response->end($res);
+//        $_SERVER = [];
+//        if(isset($request->server)){
+//            foreach ($request->server as $k => $v){
+//                $_SERVER[strtoupper($k)] = $v;
+//            }
+//        }
+//        if(isset($request->header)){
+//            foreach ($request->header as $k => $v){
+//                $_SERVER[strtoupper($k)] = $v;
+//            }
+//        }
+//
+//        $_GET = [];
+//        if(isset($request->get)){
+//            foreach ($request->get as $k => $v){
+//                $_GET[$k] = $v;
+//            }
+//        }
+//        $_GET['xx'] = 'yy';
+//
+//        $_POST = [];
+//        if(isset($request->post)){
+//            foreach ($request->post as $k => $v){
+//                $_POST[$k] = $v;
+//            }
+//        }
+//
+//        $_POST['http_server'] = $this->ws;
+//
+//        $_FILES = [];
+//        if(isset($request->files)){
+//            foreach ($request->files as $k => $v){
+//                $_FILES[$k] = $v;
+//            }
+//        }
+//
+//        ob_start();
+//        try{
+//            think\App::run()->send();
+//        }catch (Exception $e){
+//            // todo
+//        }
+//        $res = ob_get_contents();
+//        ob_end_clean();
+//
+//        $response->end($res);
 
         //($request->files);echo 'bbbbb';
     }
