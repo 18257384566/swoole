@@ -4,7 +4,7 @@ var websocket = new WebSocket(wsurl);
 
 //实例对象的onopen属性
 websocket.onopen = function(evt){
-    // websocket.send('send:hello');
+    websocket.send('send:hello');
     console.log("conected-swoole-success");
 }
 
