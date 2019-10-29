@@ -44,6 +44,19 @@ class Ws{
     }
 
     public function onRequest($request,$response){ //var_dump($request);exit;
+        global $server;//调用外部的server
+        // $server->connections 遍历所有websocket连接用户的fd，给所有用户推送
+        foreach ($server->connections as $fd) {
+            // 需要先判断是否是正确的websocket连接，否则有可能会push失败
+            if ($server->isEstablished($fd)) {
+                $server->push($fd, 'lalalalla');
+            }
+        }
+
+
+
+
+
         $_SERVER = [];
         if(isset($request->server)){
             foreach ($request->server as $k => $v){
@@ -62,7 +75,6 @@ class Ws{
                 $_GET[$k] = $v;
             }
         }
-        $_GET['xx'] = 'yy';
 
         $_POST = [];
         if(isset($request->post)){
