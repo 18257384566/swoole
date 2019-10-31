@@ -1,6 +1,6 @@
 $(function(){
 
-    $('#discuss-box').onkeydown(function(event){
+    $('#discuss-box').keydown(function(event){
         if(event.KeyCode == 13){//回车事件
             var text = $(this).val();
             var url = 'http://118.31.109.21:9111/?s=index/chart/index';
@@ -8,7 +8,7 @@ $(function(){
 
             $.post(url,data,function(result){
                 //todo
-                $(this),val('');
+                $(this).val('');
             },'json');
         }
     });
