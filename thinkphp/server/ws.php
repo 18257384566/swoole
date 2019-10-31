@@ -19,12 +19,12 @@ class Ws{
 
         $this->ws->listen(self::HOST,self::CHART_PORT,SWOOLE_SOCK_TCP);
 
-        $this->ws->set(array(
+        $this->ws->set([
             'enable_static_handler' => true,
             'document_root' => '/www/swoole/thinkphp/public/static',
             'worker_num' => 4,
             'task_worker_num' => 4,
-        ));
+        ]);
 
         $this->ws->on("open", [$this, 'onOpen']);
         $this->ws->on("message", [$this, 'onMessage']);
@@ -42,8 +42,8 @@ class Ws{
         //定义应用目录
         define('APP_PATH',__DIR__.'/../application/');
         //加载框架里面的文件
-        require __DIR__.'/../thinkphp/start.php';
-//        require __DIR__ . '/../thinkphp/base.php';
+//        require __DIR__.'/../thinkphp/start.php';
+        require __DIR__ . '/../thinkphp/base.php';
     }
 
     public function onRequest($request,$response){
@@ -56,7 +56,7 @@ class Ws{
         }
         if(isset($request->header)){
             foreach ($request->header as $k => $v){
-                $_SERVER[strtoupper($k)] = $v;
+                $_SERVER[strtoupper($k)] = $v ;
             }
         }
 
@@ -85,7 +85,10 @@ class Ws{
 
         ob_start();
         try{
-            think\App::run()->send();
+//            think\App::run()->send();
+            think\Container::get('app',[APP_PATH])
+                ->run()
+                ->send();
         }catch (Exception $e){
             // todo
         }
@@ -98,6 +101,7 @@ class Ws{
 
     //监听ws连接事件
     public function onOpen($ws, $requst){
+
         var_dump($requst->fd);
     }
 
@@ -119,7 +123,7 @@ class Ws{
 
     public function onFinish($serv, $taskId, $data){
         echo "taskId:{$taskId}";
-        echo "finish-task-sucess:{$data}";
+        echo "finish-data-sucess:{$data}";
     }
 
     //关闭
