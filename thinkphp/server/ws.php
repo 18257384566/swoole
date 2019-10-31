@@ -26,10 +26,10 @@ class Ws{
             'task_worker_num' => 4,
         ));
 
-        $this->ws->on("workerstart", [$this, 'onWorkerStart']);
-        $this->ws->on("request", [$this, 'onRequest']);
         $this->ws->on("open", [$this, 'onOpen']);
         $this->ws->on("message", [$this, 'onMessage']);
+        $this->ws->on("workerstart", [$this, 'onWorkerStart']);
+        $this->ws->on("request", [$this, 'onRequest']);
         $this->ws->on("task", [$this, 'onTask']);
         $this->ws->on("finish", [$this, 'onFinish']);
         $this->ws->on("close", [$this, 'onClose']);
@@ -42,12 +42,12 @@ class Ws{
         //定义应用目录
         define('APP_PATH',__DIR__.'/../application/');
         //加载框架里面的文件
-//        require __DIR__.'/../thinkphp/start.php';
-        require __DIR__ . '/../thinkphp/base.php';
+        require __DIR__.'/../thinkphp/start.php';
+//        require __DIR__ . '/../thinkphp/base.php';
     }
 
-    public function onRequest(Swoole\Http\Request $request, Swoole\Http\Response $response){
-        var_dump('test');
+    public function onRequest($request,$response){
+        //var_dump('test');
         $_SERVER = [];
         if(isset($request->server)){
             foreach ($request->server as $k => $v){
@@ -74,14 +74,14 @@ class Ws{
             }
         }
 
-        $_POST['http_server'] = $this->ws;
-
         $_FILES = [];
         if(isset($request->files)){
             foreach ($request->files as $k => $v){
                 $_FILES[$k] = $v;
             }
         }
+
+        $_POST['http_server'] = $this->ws;
 
         ob_start();
         try{
@@ -112,7 +112,7 @@ class Ws{
         $obj = new app\common\lib\task\Task;
 
         $method = $data['method'];
-        $flag = $obj->$method($data['data']);
+        $flag = $obj->$method($data['data'],$serv);
 
         return $flag;
     }
