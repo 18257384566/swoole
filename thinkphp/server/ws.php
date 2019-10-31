@@ -101,7 +101,7 @@ class Ws{
 
     //监听ws连接事件
     public function onOpen($ws, $requst){
-
+        var_dump($ws);
         var_dump($requst->fd);
     }
 
