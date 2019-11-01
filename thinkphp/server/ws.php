@@ -30,7 +30,6 @@ class Ws{
         $this->ws->on("message", [$this, 'onMessage']);
         $this->ws->on("workerstart", [$this, 'onWorkerStart']);
 //        $this->ws->on("request", [$this, 'onRequest']);
-//        $this->ws->on('Request', [$this, 'onRequest']);
         $this->ws->on("task", [$this, 'onTask']);
         $this->ws->on("finish", [$this, 'onFinish']);
         $this->ws->on("close", [$this, 'onClose']);

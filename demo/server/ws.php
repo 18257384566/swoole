@@ -27,6 +27,11 @@ class Ws{
         $this->ws->on("finish", [$this, 'onFinish']);
         $this->ws->on("close", [$this, 'onClose']);
 
+        $this->ws->on('request', function(swoole_http_request $request, swoole_http_response $response) {
+            var_dump('ttttt');
+            $response->end("<h1>hello swoole</h1>");
+        });
+
         $this->ws->start();
     }
 
