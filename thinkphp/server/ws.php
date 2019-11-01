@@ -30,10 +30,15 @@ class Ws{
         $this->ws->on("message", [$this, 'onMessage']);
         $this->ws->on("workerstart", [$this, 'onWorkerStart']);
 //        $this->ws->on("request", [$this, 'onRequest']);
-        $this->ws->on('Request', [$this, 'onRequest']);
+//        $this->ws->on('Request', [$this, 'onRequest']);
         $this->ws->on("task", [$this, 'onTask']);
         $this->ws->on("finish", [$this, 'onFinish']);
         $this->ws->on("close", [$this, 'onClose']);
+
+        $this->ws->on('request', function(swoole_http_request $request, swoole_http_response $response) {
+            var_dump('ttttt');
+            $response->end("<h1>hello swoole</h1>");
+        });
 
         $this->ws->start();
     }
@@ -47,58 +52,58 @@ class Ws{
         require __DIR__ . '/../thinkphp/base.php';
     }
 
-    public function onRequest(\Swoole\Http\Request $request, \Swoole\Http\Response $response){
-        var_dump('test');
-        $_SERVER = [];
-        if(isset($request->server)){
-            foreach ($request->server as $k => $v){
-                $_SERVER[strtoupper($k)] = $v;
-            }
-        }
-        if(isset($request->header)){
-            foreach ($request->header as $k => $v){
-                $_SERVER[strtoupper($k)] = $v ;
-            }
-        }
-
-        $_GET = [];
-        if(isset($request->get)){
-            foreach ($request->get as $k => $v){
-                $_GET[$k] = $v;
-            }
-        }
-
-        $_POST = [];
-        if(isset($request->post)){
-            foreach ($request->post as $k => $v){
-                $_POST[$k] = $v;
-            }
-        }
-
-        $_FILES = [];
-        if(isset($request->files)){
-            foreach ($request->files as $k => $v){
-                $_FILES[$k] = $v;
-            }
-        }
-
-        $_POST['http_server'] = $this->ws;
-
-        ob_start();
-        try{
-//            think\App::run()->send();
-            think\Container::get('app',[APP_PATH])
-                ->run()
-                ->send();
-        }catch (Exception $e){
-            // todo
-        }
-        $res = ob_get_contents();
-        ob_end_clean();
-
-        $response->end($res);
-
-    }
+//    public function onRequest(\Swoole\Http\Request $request, \Swoole\Http\Response $response){
+//        var_dump('test');
+//        $_SERVER = [];
+//        if(isset($request->server)){
+//            foreach ($request->server as $k => $v){
+//                $_SERVER[strtoupper($k)] = $v;
+//            }
+//        }
+//        if(isset($request->header)){
+//            foreach ($request->header as $k => $v){
+//                $_SERVER[strtoupper($k)] = $v ;
+//            }
+//        }
+//
+//        $_GET = [];
+//        if(isset($request->get)){
+//            foreach ($request->get as $k => $v){
+//                $_GET[$k] = $v;
+//            }
+//        }
+//
+//        $_POST = [];
+//        if(isset($request->post)){
+//            foreach ($request->post as $k => $v){
+//                $_POST[$k] = $v;
+//            }
+//        }
+//
+//        $_FILES = [];
+//        if(isset($request->files)){
+//            foreach ($request->files as $k => $v){
+//                $_FILES[$k] = $v;
+//            }
+//        }
+//
+//        $_POST['http_server'] = $this->ws;
+//
+//        ob_start();
+//        try{
+////            think\App::run()->send();
+//            think\Container::get('app',[APP_PATH])
+//                ->run()
+//                ->send();
+//        }catch (Exception $e){
+//            // todo
+//        }
+//        $res = ob_get_contents();
+//        ob_end_clean();
+//
+//        $response->end($res);
+//
+//    }
 
     //监听ws连接事件
     public function onOpen($ws, $requst){
