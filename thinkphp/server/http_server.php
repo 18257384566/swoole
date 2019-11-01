@@ -5,7 +5,7 @@ $http = new swoole_http_server("0.0.0.0",9111); //0.0.0.0 监听所有
 $http->set([
     'enable_static_handler' => true,
     'document_root' => '/www/swoole/thinkphp/public/static',
-    'worker_num' => 5,
+    'worker_num' => 4,
 ]);
 
 
@@ -16,7 +16,6 @@ $http->on('WorkerStart', function(swoole_server $server, $worker_id){
     require __DIR__ . '/../thinkphp/base.php';
 //    require __DIR__ . '/../thinkphp/start.php';
 });
-
 
 $http->on('request', function($request, $response)use($http){ //$request:接受信息 $response:发送客户端
     if(!empty($_GET)){
