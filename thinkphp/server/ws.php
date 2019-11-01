@@ -36,6 +36,7 @@ class Ws{
 
         $this->ws->on('request', function(swoole_http_request $request, swoole_http_response $response) {
             var_dump('ttttt');
+            echo 'bbbb';
             $response->end("<h1>hello swoole</h1>");
         });
 
