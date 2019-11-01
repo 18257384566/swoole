@@ -12,6 +12,7 @@ class Index
     }
 
     public function xsy(){
+        echo phpinfo();exit;
         echo time();
     }
 
