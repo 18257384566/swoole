@@ -22,5 +22,9 @@ websocket.onerror = function(evt, e){
 }
 
 function push(){
-
+    data = JSON.parse(data);
+    html = "<div class='content'>";
+    html += '<span>'+data.user+'</span>';
+    html += '<span>'+data.content+'</span>';
+    html += '</div>';
 }
