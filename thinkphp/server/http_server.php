@@ -70,7 +70,7 @@ $http->on('request', function($request, $response)use($http){ //$request:接受�
             $_FILES[$k] = $v;
         }
     }
-
+var_dump($http);
     $_POST['http_server'] = $http;
 
     // 2. 执行应用
