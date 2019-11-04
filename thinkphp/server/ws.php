@@ -9,7 +9,7 @@
 class Ws{
 
     const HOST = '0.0.0.0';
-    const PORT = 9112;
+    const PORT = 8811;
     const CHART_PORT = 8812;
 
     public $ws = null;
