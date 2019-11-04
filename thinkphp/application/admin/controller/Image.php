@@ -1,8 +1,8 @@
 <?php
 namespace app\admin\controller;
 
-use Phinx\Util\Util;
- 
+use app\common\lib\Util;
+
 class Image
 {
     public function index(){
@@ -12,9 +12,9 @@ class Image
             $data = [
                 'image' => 'http://118.31.109.21:8811/'.$info->getSaveName(),
             ];
-            return Util::show(config('code.success'),'ok',$data);
+            return Util::show(config('code.success'),'success',$data);
         }
-        return Util::show(config('code.error '),'error');
+        return Util::show(config('code.error'),'error');
     }
 
 
