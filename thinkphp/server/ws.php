@@ -84,12 +84,17 @@ class Ws{
         $_POST['http_server'] = $this->ws;
 
         ob_start();
+//        try{
+////            think\App::run()->send();
+//            think\Container::get('app',[APP_PATH])
+//                ->run()
+//                ->send();
+//        }catch (Exception $e){
+//            // todo
+//        }
         try{
-//            think\App::run()->send();
-            think\Container::get('app',[APP_PATH])
-                ->run()
-                ->send();
-        }catch (Exception $e){
+            \think\App::run()->send();
+        }catch (\Exception $e){
             // todo
         }
         $res = ob_get_contents();
