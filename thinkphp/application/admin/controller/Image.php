@@ -12,9 +12,15 @@ class Image
             $data = [
                 'image' => 'http://118.31.109.21:8811/'.$info->getSaveName(),
             ];
-            return \Phinx\Util\Util::show(config('code.success'),'success',$data);
+            $result['status'] = 1;
+            $result['message'] = 'ok';
+            $result['data'] = $data;
+            return json_encode($result);
         }
-        return \Phinx\Util\Util::show(config('code.error'),'error');
+        $result['status'] = -1;
+        $result['message'] = 'error';
+        $result['data'] = [];
+        return json_encode($result);
     }
 
 
