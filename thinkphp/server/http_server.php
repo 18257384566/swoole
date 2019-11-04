@@ -23,6 +23,11 @@ $http->on('request', function($request, $response)use($http){ //$request:接受�
     header('Access-Control-Allow-Methods:GET,POST,OPTIONS');
     header('Access-Control-Allow-Credentials:true');
     header('Access-Control-Expose-Headers:c-token,device-type,au-token,lang');
+    if ($request->server['request_method'] == 'OPTIONS') {
+        $response->status(http_response_code());
+        $response->end();
+        return;
+    }
 
     var_dump('111');
     if(!empty($_GET)){
