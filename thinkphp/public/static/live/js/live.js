@@ -10,7 +10,7 @@ websocket.onopen = function(evt){
 
 //实例化 onmessage
 websocket.onmessage = function(evt){
-    console.log("web-server-return-data:" + evt.data);
+    console.log("ws-server-return-data:" + evt.data);
 }
 
 websocket.onclose = function(evt){
