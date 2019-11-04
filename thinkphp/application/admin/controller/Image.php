@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-use app\common\lib\Util;
+
 
 class Image
 {
@@ -12,9 +12,9 @@ class Image
             $data = [
                 'image' => 'http://118.31.109.21:8811/'.$info->getSaveName(),
             ];
-            return Util::show(config('code.success'),'success',$data);
+            return \Phinx\Util\Util::show(config('code.success'),'success',$data);
         }
-        return Util::show(config('code.error'),'error');
+        return \Phinx\Util\Util::show(config('code.error'),'error');
     }
 
 
