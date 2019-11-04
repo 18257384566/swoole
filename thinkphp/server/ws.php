@@ -47,7 +47,7 @@ class Ws{
     }
 
     public function onRequest(\Swoole\Http\Request $request, \Swoole\Http\Response $response){
-        var_dump('test');
+//        var_dump('test');
         $_SERVER = [];
         if(isset($request->server)){
             foreach ($request->server as $k => $v){
@@ -107,7 +107,7 @@ class Ws{
     //监听ws连接事件
     public function onOpen($ws, $requst){
 //        var_dump($ws);
-        var_dump($requst->fd);
+        var_dump('fd='.$requst->fd);
     }
 
     //监听ws消息事件
