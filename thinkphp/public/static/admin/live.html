@@ -103,10 +103,10 @@
             auto: true,
 
             // swf文件路径
-            swf: 'http://118.31.109.21:9111/webuploader/Uploader.swf',
+            swf: 'http://118.31.109.21:8811/webuploader/Uploader.swf',
 
             // 文件接收服务端。
-            server: 'http://118.31.109.21:9111/?s=admin/image/index?aa=11&bb=22&cc=33',
+            server: 'http://118.31.109.21:8811/?s=admin/image/index?aa=11&bb=22&cc=33',
 
             // 选择文件的按钮。可选。
             // 内部根据当前运行是创建，可能是input元素，也可能是flash.
@@ -191,7 +191,7 @@
           event.preventDefault();
           var formData = $('form').serialize();
           // TODO: 请求后台接口跳转界面，前端跳转或者后台跳
-          $.get("http://118.31.109.21:9111?s=admin/live/push&" + formData, function (data) {
+          $.get("http://118.31.109.21:8811?s=admin/live/push&" + formData, function (data) {
 
             if (data.status == 1) {
               // 登录成功
