@@ -4,9 +4,9 @@ namespace app\admin\controller;
 class Live
 {
     public function push(){
-        var_dump($_POST['http_server']);
+//        var_dump($_POST['http_server']);
 
-//        $_POST['http_server']->push(2,'xsy-hello-live');
+        $_POST['http_server']->push(2,'xsy-hello-live');
 
         //入库，整理数据push到前端
 //        $ws = $_POST['http_server'];
