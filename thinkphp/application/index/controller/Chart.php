@@ -5,11 +5,30 @@ class Chart
 {
     public function index()
     {
-        var_dump($_GET);
+        $game_id = $_POST['game_id'];
+        $content = $_POST['content'];
 
-        foreach ($_POST['http_server']->ports[1]->connections as $fd){
-            $_POST['http_server']->push($fd, $fd);
+        if(!isset($game_id) || !isset($content)){
+            $result['status'] = -1;
+            $result['message'] = '参数丢失';
+            $result['data'] = [];
+            return json_encode($result);
         }
+
+        $data = [
+            'user' => 'user'.rand(10000,99999),
+            'game_id' => $game_id,
+        ];
+
+        //给所有用户推送消息
+        foreach ($_POST['http_server']->ports[1]->connections as $fd){
+            $_POST['http_server']->push($fd, $data);
+        }
+
+        $result['status'] = 1;
+        $result['message'] = 'ok';
+        $result['data'] = $data;
+        return json_encode($result);
 
     }
 
