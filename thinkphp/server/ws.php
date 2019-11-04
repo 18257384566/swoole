@@ -15,6 +15,8 @@ class Ws{
     public $ws = null;
     public function __construct()
     {
+        //判断redis中是否有上一次的fd 如果有，则删除（重启）
+
         $this->ws = new swoole_websocket_server(self::HOST,self::PORT);
 
         $this->ws->listen(self::HOST,self::CHART_PORT,SWOOLE_SOCK_TCP);
@@ -106,7 +108,7 @@ class Ws{
 
     //监听ws连接事件
     public function onOpen($ws, $requst){
-//        var_dump($ws);
+        //将fd放入redis有序集合
         var_dump('fd='.$requst->fd);
     }
 
@@ -133,6 +135,7 @@ class Ws{
 
     //关闭
     public function onClose($ws, $fd){
+        //将fd移除有序集合
         echo "clientid:{$fd}\n";
     }
 
