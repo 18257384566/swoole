@@ -17,52 +17,52 @@ $http->on('WorkerStart', function(swoole_server $server, $worker_id){
 //    require __DIR__ . '/../thinkphp/start.php';
 });
 
-//$http->on('request', function($request, $response){ //$request:接受信息 $response:发送客户端
-//    var_dump('111');
-//    if(!empty($_GET)){
-//        unset($_GET);
-//    }
-//    if(!empty($_POST)){
-//        unset($_POST);
-//    }
-//
-////var_dump($request->server);
-//    if(isset($request->server)){
-//        foreach ($request->server as $k => $v){
-//            $_SERVER[strtoupper($k)] = $v;
-//        }
-//    }
-//    if(isset($request->header)){
-//        foreach ($request->header as $k => $v){
-//            $_SERVER[strtoupper($k)] = $v;
-//        }
-//    }
-//    if(isset($request->get)){
-//        foreach ($request->get as $k => $v){
-//            $_GET[$k] = $v;
-//        }
-//    }
-//    if(isset($request->post)){
-//        foreach ($request->post as $k => $v){
-//            $_POST[$k] = $v;
-//        }
-//    }
-//
-//    // 2. 执行应用
-//    ob_start();
-//    try{
-//        \think\App::run()->send();
-//    }catch (\Exception $e){
-//        // todo
-//    }
-////    echo '-action-:'.request()->action().PHP_EOL;
-//    $res = ob_get_contents(); //将缓存赋值给变量
-//    ob_end_clean();
-//
-////    $http->close();
-//
-//    $response->cookie('name','neirong',time() + 1800);
-//    $response->end($res);
-//});
+$http->on('request', function($request, $response){ //$request:接受信息 $response:发送客户端
+    var_dump('111');
+    if(!empty($_GET)){
+        unset($_GET);
+    }
+    if(!empty($_POST)){
+        unset($_POST);
+    }
+
+//var_dump($request->server);
+    if(isset($request->server)){
+        foreach ($request->server as $k => $v){
+            $_SERVER[strtoupper($k)] = $v;
+        }
+    }
+    if(isset($request->header)){
+        foreach ($request->header as $k => $v){
+            $_SERVER[strtoupper($k)] = $v;
+        }
+    }
+    if(isset($request->get)){
+        foreach ($request->get as $k => $v){
+            $_GET[$k] = $v;
+        }
+    }
+    if(isset($request->post)){
+        foreach ($request->post as $k => $v){
+            $_POST[$k] = $v;
+        }
+    }
+
+    // 2. 执行应用
+    ob_start();
+    try{
+        \think\App::run()->send();
+    }catch (\Exception $e){
+        // todo
+    }
+//    echo '-action-:'.request()->action().PHP_EOL;
+    $res = ob_get_contents(); //将缓存赋值给变量
+    ob_end_clean();
+
+//    $http->close();
+
+    $response->cookie('name','neirong',time() + 1800);
+    $response->end($res);
+});
 
 $http->start();
