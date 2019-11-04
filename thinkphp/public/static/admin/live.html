@@ -125,7 +125,7 @@
                 var $li = $(
                     '<div id="' + file.id + '" class="file-item thumbnail">' +
                     '<img>' +
-                    '<div class="info">' + file.name + '</div>' +
+                    
                     '</div>'
                     ),
                     $img = $li.find('img');
@@ -163,7 +163,10 @@
         });
 
         // 文件上传成功，给item添加成功class, 用样式标记上传成功。
-        uploader.on( 'uploadSuccess', function( file ) {
+        uploader.on( 'uploadSuccess', function( file, response ) {
+            if(response.status == 1){
+                $( '#'+file.id ).append('<input type="hidden" name="image" value="'+response.data.image+'" />');
+            }
             $( '#'+file.id ).addClass('upload-state-done');
         });
 

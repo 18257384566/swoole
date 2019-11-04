@@ -10,7 +10,7 @@ class Image
         $info = $files->move('../public/static/upload');
         if($info){
             $data = [
-                'image' => 'http://118.31.109.21:8811/'.$info->getSaveName(),
+                'image' => 'http://118.31.109.21:8811/upload/'.$info->getSaveName(),
             ];
             $result['status'] = 1;
             $result['message'] = 'ok';
