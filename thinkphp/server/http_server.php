@@ -18,11 +18,10 @@ $http->on('WorkerStart', function(swoole_server $server, $worker_id){
 });
 
 $http->on('request', function($request, $response)use($http){ //$request:接受信息 $response:发送客户端
-    //跨域
-    header('Access-Control-Allow-Headers:c-token,device-type,au-token,lang,Origin, Content-Type, Cookie, Accept');
-    header('Access-Control-Allow-Methods:GET,POST,OPTIONS');
-    header('Access-Control-Allow-Credentials:true');
-    header('Access-Control-Expose-Headers:c-token,device-type,au-token,lang');
+    // 跨域OPTIONS返回
+    $response->header('Access-Control-Allow-Origin', '*');
+    $response->header('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, PATCH, OPTIONS');
+    $response->header('Access-Control-Allow-Headers', 'Authorization, User-Agent, Keep-Alive, Content-Type, X-Requested-With');
     if ($request->server['request_method'] == 'OPTIONS') {
         $response->status(http_response_code());
         $response->end();
