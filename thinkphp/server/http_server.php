@@ -17,13 +17,16 @@ $http->on('WorkerStart', function(swoole_server $server, $worker_id){
 //    require __DIR__ . '/../thinkphp/start.php';
 });
 
-$http->on('request', function($request, $response){ //$request:接受信息 $response:发送客户端
+$http->on('request', function($request, $response)use($http){ //$request:接受信息 $response:发送客户端
     var_dump('111');
     if(!empty($_GET)){
         unset($_GET);
     }
     if(!empty($_POST)){
         unset($_POST);
+    }
+    if(!empty($_FILES)){
+        unset($_FILES);
     }
 
 //var_dump($request->server);
@@ -32,21 +35,33 @@ $http->on('request', function($request, $response){ //$request:接受信息 $res
             $_SERVER[strtoupper($k)] = $v;
         }
     }
+
     if(isset($request->header)){
         foreach ($request->header as $k => $v){
             $_SERVER[strtoupper($k)] = $v;
         }
     }
+
     if(isset($request->get)){
         foreach ($request->get as $k => $v){
             $_GET[$k] = $v;
         }
     }
+
     if(isset($request->post)){
         foreach ($request->post as $k => $v){
             $_POST[$k] = $v;
         }
     }
+
+    $_FILES = [];
+    if(isset($request->files)){
+        foreach ($request->files as $k => $v){
+            $_FILES[$k] = $v;
+        }
+    }
+
+    $_POST['http_server'] = $http;
 
     // 2. 执行应用
     ob_start();
