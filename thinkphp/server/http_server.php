@@ -18,6 +18,7 @@ $http->on('WorkerStart', function(swoole_server $server, $worker_id){
 });
 
 $http->on('request', function($request, $response)use($http){ //$request:接受信息 $response:发送客户端
+    var_dump('111');
     if(!empty($_GET)){
         unset($_GET);
     }
