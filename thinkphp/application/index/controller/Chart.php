@@ -26,7 +26,7 @@ class Chart
 //            $_POST['http_server']->push($fd, json_encode($data));
 //        }
 
-        $fdList = [3,4];
+        $fdList = [5,4];
         foreach ($fdList as $k => $v){
             $_POST['http_server']->push($v,json_encode($data));
         }
