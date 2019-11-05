@@ -12,7 +12,8 @@ class Live
         $ws = $_POST['http_server']->ports[0];
         foreach($ws->connections as $fd)
         {
-            $ws->send($fd, "xsy-hello-live");
+//            var_dump($fd);
+            $ws->push($fd, "xsy-hello-live");
         }
     }
 
