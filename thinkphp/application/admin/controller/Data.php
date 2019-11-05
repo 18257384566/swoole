@@ -1,7 +1,7 @@
 <?php
 namespace app\admin\controller;
 
-class Live
+class Data
 {
     public function push(){
         var_dump($_GET);
@@ -14,7 +14,7 @@ class Live
         ];
 
         //入库，整理数据push到前端
-        foreach ($_POST['http_server']->ports[0]->connections as $fd){
+        foreach ($_POST['http_server']->ports[2]->connections as $fd){
             $_POST['http_server']->push($fd, json_encode($data));
         }
 
