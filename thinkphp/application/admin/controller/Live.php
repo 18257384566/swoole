@@ -9,7 +9,7 @@ class Live
 //        $_POST['http_server']->push(3,'xsy-hello-live');
 
         //入库，整理数据push到前端
-        foreach ($_POST['http_server']->ports[0]->connections as $fd){
+        foreach ($_POST['http_server']->ports[1]->connections as $fd){
             var_dump($fd).'\n';
             $_POST['http_server']->push($fd, 'xsy-push-live');
         }
