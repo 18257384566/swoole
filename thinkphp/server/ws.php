@@ -20,8 +20,8 @@ class Ws{
 
         $this->ws = new swoole_websocket_server(self::HOST,self::PORT);
 
-        $this->ws->listen(self::HOST,self::CHART_PORT,SWOOLE_SOCK_TCP);
         $this->ws->listen(self::HOST,self::DATA_PORT,SWOOLE_SOCK_TCP);
+        $this->ws->listen(self::HOST,self::CHART_PORT,SWOOLE_SOCK_TCP);
 
         $this->ws->set([
             'enable_static_handler' => true,
@@ -100,14 +100,6 @@ class Ws{
 //        var_dump($_POST['http_server']);
 
         ob_start();
-//        try{
-////            think\App::run()->send();
-//            think\Container::get('app',[APP_PATH])
-//                ->run()
-//                ->send();
-//        }catch (Exception $e){
-//            // todo
-//        }
         try{
             \think\App::run()->send();
         }catch (\Exception $e){
