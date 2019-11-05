@@ -21,7 +21,7 @@ websocket.onerror = function(evt, e){
     console.log("error:" + evt.data);
 }
 
-function push(){
+function push(data){
     data = JSON.parse(data);
     html = "<div class='comment'>";
     html += '<span>'+data.user+'</span>';
