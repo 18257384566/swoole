@@ -15,6 +15,7 @@ class Data
 
         //入库，整理数据push到前端
         foreach ($_POST['http_server']->ports[2]->connections as $fd){
+            var_dump($fd);
             $_POST['http_server']->push($fd, json_encode($data));
         }
 
