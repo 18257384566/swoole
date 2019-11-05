@@ -9,8 +9,7 @@
 class Ws{
 
     const HOST = '0.0.0.0';
-    const PORT = 8811;
-    const CHART_PORT = 8812;
+    const PORT = 8813;
 
     public $ws = null;
     public function __construct()
@@ -18,8 +17,6 @@ class Ws{
         //判断redis中是否有上一次的fd 如果有，则删除（重启）
 
         $this->ws = new swoole_websocket_server(self::HOST,self::PORT);
-
-        $this->ws->listen(self::HOST,self::DATA_PORT,SWOOLE_SOCK_TCP);
 
         $this->ws->set([
             'enable_static_handler' => true,
