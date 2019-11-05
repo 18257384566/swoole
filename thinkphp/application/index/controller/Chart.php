@@ -22,14 +22,15 @@ class Chart
 
         //给所有用户推送消息
 //        var_dump($_POST['http_server']->ports[1]);
-//        foreach ($_POST['http_server']->ports[1]->connections as $fd){
-//            $_POST['http_server']->push($fd, json_encode($data));
-//        }
-
-        $fdList = [5,4];
-        foreach ($fdList as $k => $v){
-            $_POST['http_server']->push($v,json_encode($data));
+        foreach ($_POST['http_server']->ports[1]->connections as $fd){
+            var_dump($fd.'\n');
+            $_POST['http_server']->push($fd, json_encode($data));
         }
+
+//        $fdList = [5,4];
+//        foreach ($fdList as $k => $v){
+//            $_POST['http_server']->push($v,json_encode($data));
+//        }
 
         $result['status'] = 1;
         $result['message'] = 'ok';
