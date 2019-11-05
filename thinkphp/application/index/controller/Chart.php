@@ -18,6 +18,7 @@ class Chart
         $data = [
             'user' => 'user'.rand(10000,99999),
             'game_id' => $game_id,
+            'content' => $content,
         ];
 
         //给所有用户推送消息
