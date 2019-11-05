@@ -52,6 +52,17 @@ class Ws{
 
     public function onRequest(\Swoole\Http\Request $request, \Swoole\Http\Response $response){
 //        var_dump('test');
+        // 跨域OPTIONS返回
+        $response->header('Access-Control-Allow-Origin', '*');
+        $response->header('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, PATCH, OPTIONS');
+        $response->header('Access-Control-Allow-Headers', 'Authorization, User-Agent, Keep-Alive, Content-Type, X-Requested-With');
+        if ($request->server['request_method'] == 'OPTIONS') {
+            $response->status(http_response_code());
+            $response->end();
+            return;
+        }
+
+
         $_SERVER = [];
         if(isset($request->server)){
             foreach ($request->server as $k => $v){
