@@ -28,6 +28,7 @@ class Ws{
             'task_worker_num' => 4,
         ]);
 
+        $this->ws->on("start", [$this, 'onStart']);
         $this->ws->on("open", [$this, 'onOpen']);
         $this->ws->on("message", [$this, 'onMessage']);
         $this->ws->on("workerstart", [$this, 'onWorkerStart']);
@@ -36,9 +37,11 @@ class Ws{
         $this->ws->on("finish", [$this, 'onFinish']);
         $this->ws->on("close", [$this, 'onClose']);
 
-        swoole_set_process_name('live_swoole');
-
         $this->ws->start();
+    }
+
+    public function onStart($server){
+        swoole_set_process_name('live_swoole');
     }
 
     //
