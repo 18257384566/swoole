@@ -36,6 +36,8 @@ class Ws{
         $this->ws->on("finish", [$this, 'onFinish']);
         $this->ws->on("close", [$this, 'onClose']);
 
+        swoole_set_process_name('live_swoole');
+
         $this->ws->start();
     }
 
@@ -60,7 +62,7 @@ class Ws{
             return;
         }
 
-        //过滤
+        //过滤多余的请求
         if ($request->server['request_uri'] == '/favicon.ico'){
             $response->status(200);
             $response->end();
