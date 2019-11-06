@@ -11,6 +11,7 @@ class Index
     }
 
     public function xsy(){
+        echo '111';
         echo time();
     }
 
