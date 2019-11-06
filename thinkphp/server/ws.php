@@ -61,6 +61,7 @@ class Ws{
         }
 
         //过滤
+        var_dump($request->server['request_uri']);
         if ($request->server['request_uri'] == '/favicon.ico'){
             $response->status(404);
             $response->end();
