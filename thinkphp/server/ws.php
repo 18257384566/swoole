@@ -60,6 +60,13 @@ class Ws{
             return;
         }
 
+        //过滤
+        if ($request->server['request_uri'] == '/favicon.ico'){
+            $response->status(404);
+            $response->end();
+            return;
+        }
+
 
         $_SERVER = [];
         if(isset($request->server)){
