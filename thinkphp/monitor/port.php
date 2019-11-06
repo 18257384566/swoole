@@ -12,9 +12,9 @@ class port{
         $result = shell_exec($shell);
         if($result == 0){
             //发端短信警报
-            echo date('Y-m-d H:i:s').' : error';
+            echo date('Y-m-d H:i:s').' : error'.PHP_EOL;
         }else{
-            echo date('Y-m-d H:i:s').' : success';
+            echo date('Y-m-d H:i:s').' : success'.PHP_EOL;
         }
     }
 }
