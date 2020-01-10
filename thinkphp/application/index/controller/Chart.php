@@ -32,7 +32,7 @@ class Chart
             4 => 5,
             5 => 6,
         ];
-        foreach ($a as $k => $fd){
+        foreach ($_POST['http_server']->ports[1]->connections as $fd){
             var_dump($fd);
             $_POST['http_server']->push($fd, json_encode($data));
         }
