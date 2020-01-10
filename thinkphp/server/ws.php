@@ -126,6 +126,7 @@ class Ws{
     public function onOpen($ws, $requst){
         //将fd放入redis有序集合
         var_dump('fd='.$requst->fd);
+        $ws->push($requst->fd, '11111');
     }
 
     //监听ws消息事件
