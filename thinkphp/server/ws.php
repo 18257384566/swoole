@@ -124,10 +124,10 @@ class Ws{
 
     //监听ws连接事件
     public function onOpen($ws, $requst){
-        var_dump($ws);
+//        var_dump($ws);
         //将fd放入redis有序集合
         var_dump('fd='.$requst->fd);
-        $ws->push($requst->fd, '11111');
+//        $ws->push($requst->fd, '11111');
     }
 
     //监听ws消息事件
