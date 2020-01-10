@@ -126,7 +126,7 @@ class Ws{
     public function onOpen($ws, $requst){
 //        var_dump($ws);
         //将fd放入redis有序集合
-//        var_dump('fd='.$requst->fd);
+        var_dump('fd='.$requst->fd);
 //        $ws->push($requst->fd, '11111');
     }
 

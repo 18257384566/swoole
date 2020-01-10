@@ -22,9 +22,9 @@ class Chart
         ];
 
         //给所有用户推送消息
-        var_dump($_POST['http_server']->ports[1]->connections);
+        var_dump($_POST['http_server']->connections);
         var_dump($_POST['http_server']->ports[0]->connections);
-        var_dump($_POST['http_server']->ports[2]->connections);
+        var_dump($_POST['http_server']->ports[1]->connections);
         $a = [
             0 => 5,
             1 => 2,
