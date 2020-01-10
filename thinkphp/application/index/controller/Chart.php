@@ -26,7 +26,7 @@ class Chart
         var_dump('0=>'.isset($_POST['http_server']->ports[0]));
         var_dump('1=>'.isset($_POST['http_server']->ports[1]));
         var_dump('2=>'.isset($_POST['http_server']->ports[2]));
-        foreach ($_POST['http_server']->ports[1]->connections as $fd){
+        foreach ($_POST['http_server']->ports[0]->connections as $fd){
             var_dump($fd);
             $_POST['http_server']->push($fd, json_encode($data));
         }
