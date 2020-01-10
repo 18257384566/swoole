@@ -23,7 +23,14 @@ class Chart
 
         //给所有用户推送消息
         var_dump($_POST['http_server']->ports[1]->connections);
-        $a = [1,2,3,4,5,6,7,8];
+        $a = [
+            0 => 1,
+            1 => 2,
+            2 => 3,
+            3 => 4,
+            4 => 5,
+            5 => 6,
+        ];
         foreach ($a as $k => $fd){
             var_dump($fd);
             $_POST['http_server']->push($fd, json_encode($data));
