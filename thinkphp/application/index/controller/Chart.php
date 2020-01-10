@@ -25,7 +25,7 @@ class Chart
         var_dump($_POST['http_server']->ports[1]->connections);
         var_dump($_POST['http_server']->ports[0]->connections);
         $a = [
-            0 => 1,
+            0 => 5,
             1 => 2,
             2 => 3,
             3 => 4,
