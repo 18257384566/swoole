@@ -22,6 +22,7 @@ class Chart
         ];
 
         //给所有用户推送消息
+        echo '<pre>';
         var_dump($_POST['http_server']->ports);
         foreach ($_POST['http_server']->ports[1]->connections as $fd){
             var_dump($fd);
