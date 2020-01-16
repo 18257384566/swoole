@@ -54,7 +54,7 @@ class Ws{
     }
 
     public function onRequest(\Swoole\Http\Request $request, \Swoole\Http\Response $response){
-//        var_dump('test');
+        var_dump('test');
         // 跨域OPTIONS返回
         $response->header('Access-Control-Allow-Origin', '*');
         $response->header('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, PATCH, OPTIONS');
@@ -106,6 +106,10 @@ class Ws{
             }
         }
 
+        var_dump($this->ws->connections);
+        var_dump($this->ws->ports[0]->connections);
+        var_dump($this->ws->ports[1]->connections);
+
         $_POST['http_server'] = $this->ws;
 //        var_dump($_POST['http_server']);
 
@@ -124,10 +128,9 @@ class Ws{
 
     //监听ws连接事件
     public function onOpen($ws, $requst){
-//        var_dump($ws);
         //将fd放入redis有序集合
         var_dump('fd='.$requst->fd);
-//        $ws->push($requst->fd, '11111');
+        $ws->push($requst->fd, '11111');
     }
 
     //监听ws消息事件
